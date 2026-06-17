@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: say my name
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: justbuy jiang
+language: zh-CN
 timezone: ''
 
 # URL
@@ -68,6 +68,12 @@ index_generator:
 default_category: uncategorized
 category_map:
 tag_map:
+
+# Knowledge section tags shown on /tags/.
+# Add a new item here to create a tag before any article uses it.
+knowledge_tags:
+  - 数学
+  - 机器学习
 
 # Metadata elements
 ## https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta

@@ -7,6 +7,20 @@ block content
   else
     include ./includes/mixins/article-sort.pug
     #tag
+      - const tags = site.tags.sort('name', 1)
+      .knowledge-filter
+        a.knowledge-filter-item(href=url_for(config.tag_dir) + '/')
+          span 全部
+          em= site.posts.length
+        each tagItem in tags.toArray()
+          - const activeClass = tagItem.name === page.tag ? 'active' : ''
+          a.knowledge-filter-item(class=activeClass href=url_for(tagItem.path))
+            span= tagItem.name
+            em= tagItem.length
+
       .article-sort-title= _p('page.tag') + ' - ' + page.tag
-      +articleSort(page.posts)
+      if page.posts.length
+        +articleSort(page.posts)
+      else
+        .article-sort-empty 暂时还没有文章
       include includes/pagination.pug

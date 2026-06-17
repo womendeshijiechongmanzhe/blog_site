@@ -1,2 +1,18 @@
-.tag-cloud-list.text-center
-  !=cloudTags({source: site.tags, orderby: page.orderby || 'random', order: page.order || 1, minfontsize: 1.2, maxfontsize: 1.5, limit: 0, unit: 'em', custom_colors: page.custom_colors})
+include ../mixins/article-sort.pug
+
+- const tags = site.tags.sort(page.orderby || 'name', page.order || 1)
+.knowledge-filter
+  a.knowledge-filter-item.active(href=url_for(config.tag_dir) + '/')
+    span 全部
+    em= site.posts.length
+  each tag in tags.toArray()
+    a.knowledge-filter-item(href=url_for(tag.path))
+      span= tag.name
+      em= tag.length
+
+.knowledge-section-list
+  .article-sort-title 全部文章
+  if site.posts.length
+    +articleSort(site.posts.sort('-date'))
+  else
+    .article-sort-empty 暂时还没有文章

@@ -1,0 +1,220 @@
+/* Fixed full-page background for Butterfly. */
+:root {
+  --glass-card-bg: rgba(255, 255, 255, 0.72);
+  --glass-card-border: rgba(255, 255, 255, 0.45);
+  --glass-card-shadow: 0 10px 30px rgba(15, 23, 42, 0.12);
+  --glass-card-hover-shadow: 0 14px 36px rgba(15, 23, 42, 0.18);
+  --glass-blur: saturate(140%) blur(10px);
+  --global-bg: transparent;
+  --card-bg: var(--glass-card-bg);
+  --search-bg: rgba(255, 255, 255, 0.78);
+  --sidebar-bg: rgba(255, 255, 255, 0.82);
+  --sidebar-menu-bg: rgba(255, 255, 255, 0.86);
+  --card-box-shadow: var(--glass-card-shadow);
+  --card-hover-box-shadow: var(--glass-card-hover-shadow);
+}
+
+[data-theme='dark'] {
+  --glass-card-bg: rgba(18, 18, 18, 0.68);
+  --glass-card-border: rgba(255, 255, 255, 0.12);
+  --glass-card-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+  --glass-card-hover-shadow: 0 14px 36px rgba(0, 0, 0, 0.34);
+  --global-bg: transparent;
+  --card-bg: var(--glass-card-bg);
+  --search-bg: rgba(18, 18, 18, 0.74);
+  --sidebar-bg: rgba(18, 18, 18, 0.78);
+  --sidebar-menu-bg: rgba(18, 18, 18, 0.86);
+  --card-box-shadow: var(--glass-card-shadow);
+  --card-hover-box-shadow: var(--glass-card-hover-shadow);
+}
+
+html,
+body,
+#body-wrap {
+  background: transparent !important;
+}
+
+#web_bg,
+#web_bg.bg-animation {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: -999 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: url('/img/top_img_home.jpg') center center / cover no-repeat fixed !important;
+  pointer-events: none;
+  transform: none !important;
+  will-change: auto !important;
+}
+
+#web_bg::before {
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+  content: '';
+}
+
+[data-theme='dark'] #web_bg::before {
+  background: rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Use the same fixed background behind the page header instead of a moving banner. */
+#page-header,
+#page-header.full_page,
+#page-header.not-home-page,
+#page-header.post-bg,
+#page-header.not-top-img {
+  background: transparent !important;
+}
+
+#page-header::before {
+  background: transparent !important;
+}
+
+/* Home page: no full-screen hero; cards start right after the nav bar. */
+.page #page-header.not-top-img {
+  margin-bottom: 0 !important;
+  height: 60px !important;
+}
+
+.page #page-header.not-top-img + #content-inner {
+  padding-top: 20px;
+}
+
+/* Transparent glass cards across the main Butterfly layout. */
+#recent-posts > .recent-post-item,
+.card-widget,
+#post,
+#page,
+#archive,
+#tag,
+#category,
+#post-comment,
+#pagination .page-number,
+#pagination .extend,
+.search-dialog,
+.post-copyright,
+#post-outdate-notice,
+.relatedPosts,
+.relatedPosts > .relatedPosts-list > div,
+.layout .pagination > *:not(.space),
+.archive-item,
+.category-lists,
+.tag-cloud-list,
+.flink-list > .flink-list-item,
+.tabs,
+.note {
+  border: 1px solid var(--glass-card-border) !important;
+  background: var(--glass-card-bg) !important;
+  box-shadow: var(--glass-card-shadow) !important;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+#recent-posts > .recent-post-item:hover,
+.card-widget:hover,
+.layout .pagination > *:not(.space):hover {
+  box-shadow: var(--glass-card-hover-shadow) !important;
+}
+
+#page-header.nav-fixed > #nav,
+#page-header.not-top-img > #nav,
+#page-header.fixed > #nav,
+#nav.show {
+  background: rgba(255, 255, 255, 0.38) !important;
+  box-shadow: none !important;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+[data-theme='dark'] #page-header.nav-fixed > #nav,
+[data-theme='dark'] #page-header.not-top-img > #nav,
+[data-theme='dark'] #page-header.fixed > #nav,
+[data-theme='dark'] #nav.show {
+  background: rgba(18, 18, 18, 0.42) !important;
+}
+
+#footer {
+  background: transparent !important;
+}
+
+#footer::before {
+  background: transparent !important;
+}
+
+.search-dialog input,
+.search-dialog .ais-SearchBox-input,
+#aside-content #card-info-btn,
+#aside-content .card-archives a,
+#aside-content .card-categories a {
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+/* Keep visible navigation focused on Home, Knowledge Sections, and About. */
+#aside-content .site-data > a[href='/archives/'],
+#aside-content .site-data > a[href='/categories/'],
+#sidebar-menus .site-data > a[href='/archives/'],
+#sidebar-menus .site-data > a[href='/categories/'],
+#aside-content .card-archives,
+#aside-content .card-categories {
+  display: none !important;
+}
+
+.article-sort-empty {
+  padding: 28px 0;
+  color: var(--card-meta);
+  text-align: center;
+}
+
+.knowledge-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 28px;
+}
+
+.knowledge-filter-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--glass-card-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.34);
+  color: var(--font-color);
+  line-height: 1.6;
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+}
+
+.knowledge-filter-item:hover,
+.knowledge-filter-item.active {
+  background: var(--btn-bg);
+  color: var(--btn-color);
+  text-decoration: none !important;
+}
+
+.knowledge-filter-item em {
+  min-width: 1.6em;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  color: inherit;
+  text-align: center;
+  font-style: normal;
+  font-size: 0.82em;
+}
+
+.knowledge-section-list {
+  margin-top: 4px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  :root {
+    --glass-card-bg: rgba(255, 255, 255, 0.86);
+  }
+
+  [data-theme='dark'] {
+    --glass-card-bg: rgba(18, 18, 18, 0.82);
+  }
+}
