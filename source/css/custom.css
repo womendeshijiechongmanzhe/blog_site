@@ -209,6 +209,41 @@ body,
   margin-top: 4px;
 }
 
+.knowledge-section-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 8px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+}
+
+.knowledge-section-summary::-webkit-details-marker {
+  display: none;
+}
+
+.knowledge-section-summary i {
+  font-size: 0.72em;
+  transition: transform 0.25s ease;
+}
+
+.knowledge-section-list[open] > .knowledge-section-summary i {
+  transform: rotate(180deg);
+}
+
+.knowledge-section-list:not([open]) > .knowledge-section-summary {
+  padding-bottom: 0;
+}
+
+.knowledge-section-list:not([open]) > .knowledge-section-summary::after {
+  display: none;
+}
+
+.knowledge-section-content {
+  overflow: hidden;
+}
+
 @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   :root {
     --glass-card-bg: rgba(255, 255, 255, 0.86);

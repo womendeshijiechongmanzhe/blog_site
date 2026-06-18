@@ -10,9 +10,12 @@ include ../mixins/article-sort.pug
       span= tag.name
       em= tag.length
 
-.knowledge-section-list
-  .article-sort-title 全部文章
-  if site.posts.length
-    +articleSort(site.posts.sort('-date'))
-  else
-    .article-sort-empty 暂时还没有文章
+details.knowledge-section-list
+  summary.article-sort-title.knowledge-section-summary
+    span 全部文章
+    i.fas.fa-chevron-down(aria-hidden='true')
+  .knowledge-section-content
+    if site.posts.length
+      +articleSort(site.posts.sort('-date'))
+    else
+      .article-sort-empty 暂时还没有文章
