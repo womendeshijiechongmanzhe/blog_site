@@ -291,7 +291,7 @@ aside:
       link: https://github.com/womendeshijiechongmanzhe
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: Welcome to my channel!
   card_recent_post:
     enable: true
     # If set 0 will show all
